@@ -12,6 +12,7 @@ buildscript {
 
 apply plugin: 'java'
 apply plugin: 'idea'
+apply plugin: 'maven'
 apply plugin: 'org.springframework.boot'
 
 jar {
@@ -33,6 +34,11 @@ dependencies {
     // '/health' エンドポイントなどを自動で追加するライブラリです。
     // https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-endpoints.html
     compile('org.springframework.boot:spring-boot-starter-actuator')
+
+    // use web socket
+    compile("me.ramswaroop.jbot:jbot:3.0.2")
+
+    compile('org.springframework.boot:spring-boot-starter-tomcat')
 
     // Spring Test を利用できるように設定します。
     testCompile('org.springframework.boot:spring-boot-starter-test')
