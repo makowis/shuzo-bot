@@ -15,9 +15,12 @@ apply plugin: 'idea'
 apply plugin: 'maven'
 apply plugin: 'org.springframework.boot'
 
+processResources.destinationDir = compileJava.destinationDir
+compileJava.dependsOn processResources
+
 jar {
     baseName = 'shuzobot'
-    version =  '0.1.0'
+    version =  '0.2.0'
 }
 
 repositories {
@@ -26,9 +29,6 @@ repositories {
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
-
-processResources.destinationDir = compileJava.destinationDir
-compileJava.dependsOn processResources
 
 dependencies {
 
@@ -44,10 +44,8 @@ dependencies {
     // Spring Boot-Doma連携用
     compile('org.seasar.doma.boot:doma-spring-boot-starter:1.1.1')
     compile('mysql:mysql-connector-java:5.1.38')
+    compile('com.h2database:h2')
 
     compile('org.springframework.boot:spring-boot-starter-tomcat')
 
-
-    // Spring Test を利用できるように設定します。
-    testCompile('org.springframework.boot:spring-boot-starter-test')
 }

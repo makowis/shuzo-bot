@@ -9,8 +9,8 @@ import shuzobot.entity.EncouragementWord;
 
 import java.util.List;
 
-@ConfigAutowireable
 @Dao
+@ConfigAutowireable
 public interface EncouragementWordDao {
     @Select
     List<EncouragementWord> selectAll();
