@@ -27,6 +27,9 @@ repositories {
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
+processResources.destinationDir = compileJava.destinationDir
+compileJava.dependsOn processResources
+
 dependencies {
 
     compile('org.springframework.boot:spring-boot-starter-web') 
@@ -38,7 +41,12 @@ dependencies {
     // use web socket
     compile("me.ramswaroop.jbot:jbot:3.0.2")
 
+    // Spring Boot-Doma連携用
+    compile('org.seasar.doma.boot:doma-spring-boot-starter:1.1.1')
+    compile('mysql:mysql-connector-java:5.1.38')
+
     compile('org.springframework.boot:spring-boot-starter-tomcat')
+
 
     // Spring Test を利用できるように設定します。
     testCompile('org.springframework.boot:spring-boot-starter-test')
