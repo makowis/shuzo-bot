@@ -6,3 +6,12 @@ rtmUrl=https://slack.com/api/rtm.start?token={token}&simple_latest&no_unreads
 slackBotToken=xoxb-xxxxxxx-xxxxxxxxxx
 #slashCommandToken=X73Fv3Tokenx242CdpEq
 #slackIncomingWebhookUrl=https://hooks.slack.com/services/T025DUwebhookurloOYvPiHL7y6
+# mysql
+spring.datasource.url=jdbc:mysql://localhost/shuzo
+spring.datasource.username=root
+spring.datasource.password=test
+spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+
+#doma
+doma.dialect=mysql
+doma.sql-file-repository=no_cache

@@ -15,9 +15,19 @@ apply plugin: 'idea'
 apply plugin: 'maven'
 apply plugin: 'org.springframework.boot'
 
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.1'
+}
+
+idea.module.outputDir = compileJava.destinationDir
+idea.module.inheritOutputDirs = true
+processResources.destinationDir = compileJava.destinationDir
+compileJava.dependsOn processResources
+
+
 jar {
     baseName = 'shuzobot'
-    version =  '0.1.0'
+    version =  '0.2.0'
 }
 
 repositories {
@@ -38,8 +48,10 @@ dependencies {
     // use web socket
     compile("me.ramswaroop.jbot:jbot:3.0.2")
 
+    // Spring Boot-Doma連携用
+    compile('org.seasar.doma.boot:doma-spring-boot-starter:1.1.1')
+    compile('mysql:mysql-connector-java:5.1.38')
+
     compile('org.springframework.boot:spring-boot-starter-tomcat')
 
-    // Spring Test を利用できるように設定します。
-    testCompile('org.springframework.boot:spring-boot-starter-test')
 }

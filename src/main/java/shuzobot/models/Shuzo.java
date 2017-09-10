@@ -1,8 +1,10 @@
 package shuzobot.models;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import shuzobot.dao.EncouragementWordDao;
+import shuzobot.entity.EncouragementWord;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -11,23 +13,15 @@ import java.util.Random;
  */
 @Component
 public class Shuzo {
-    private List<String> 励ましの言葉集;
+    private List<EncouragementWord> 励ましの言葉集;
 
-    public Shuzo() {
-        励ましの言葉集 = new ArrayList<String>(){
-            {
-                add("何言ってんだよ！！ \nその崖っぷちが最高のチャンスなんだぜ！！");
-                add("諦めんなよ！\n諦めんなよ、お前！！");
-                add("一番になるっつったよな？ ナンバー1になるっつったよな！？");
-                add("100回叩くと壊れる壁があったとする。\nでもみんな何回叩けば壊れるかわからないから、\n90回まで来ていても途中であきらめてしまう。");
-                add("本気になれば自分が変わる！ 本気になれば全てが変わる！！");
-            }
-        };
-    }
+    @Autowired
+    EncouragementWordDao encouragementWordDao;
 
     public String 励ます() {
+        励ましの言葉集 = encouragementWordDao.selectAll();
         int index = new Random().nextInt(励ましの言葉集.size());
-        return 励ましの言葉集.get(index);
+        return 励ましの言葉集.get(index).word;
     }
 
     public String 自己紹介する() {
