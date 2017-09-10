@@ -52,6 +52,9 @@ dependencies {
     compile('org.seasar.doma.boot:doma-spring-boot-starter:1.1.1')
     compile('mysql:mysql-connector-java:5.1.38')
 
+    // flyway
+    compile('org.flywaydb:flyway-core:4.2.0')
+
     compile('org.springframework.boot:spring-boot-starter-tomcat')
 
 }
