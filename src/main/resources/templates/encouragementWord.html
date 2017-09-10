@@ -1,0 +1,13 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello Thymeleaf</title>
+</head>
+<body>
+<h1>励ましの言葉たち</h1>
+<ul>
+    <li th:each="element : ${encouragementWords}">[[${element.word}]]</li>
+</ul>
+</body>
+</html>
