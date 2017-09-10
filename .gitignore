@@ -35,3 +35,7 @@ settings.xml
 target
 transaction-logs
 application.properties
+
+generated
+classes
+out

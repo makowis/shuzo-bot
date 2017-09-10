@@ -15,8 +15,15 @@ apply plugin: 'idea'
 apply plugin: 'maven'
 apply plugin: 'org.springframework.boot'
 
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.1'
+}
+
+idea.module.outputDir = compileJava.destinationDir
+idea.module.inheritOutputDirs = true
 processResources.destinationDir = compileJava.destinationDir
 compileJava.dependsOn processResources
+
 
 jar {
     baseName = 'shuzobot'
