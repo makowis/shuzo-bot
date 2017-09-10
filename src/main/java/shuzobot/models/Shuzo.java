@@ -13,15 +13,13 @@ import java.util.Random;
  */
 @Component
 public class Shuzo {
-    private List<EncouragementWord> 励ましの言葉集;
 
     @Autowired
     EncouragementWordDao encouragementWordDao;
 
     public String 励ます() {
-        励ましの言葉集 = encouragementWordDao.selectAll();
-        int index = new Random().nextInt(励ましの言葉集.size());
-        return 励ましの言葉集.get(index).word;
+        EncouragementWord 励ましの言葉 = encouragementWordDao.selectRandom();
+        return 励ましの言葉.word;
     }
 
     public String 自己紹介する() {

@@ -15,6 +15,9 @@ public interface EncouragementWordDao {
     @Select
     List<EncouragementWord> selectAll();
 
+    @Select
+    EncouragementWord selectRandom();
+
     @Insert
     @Transactional
     int insert(EncouragementWord encouragementWord);

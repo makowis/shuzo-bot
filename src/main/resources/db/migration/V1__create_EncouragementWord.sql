@@ -1,4 +1,4 @@
 CREATE TABLE EncouragementWord(
-  word VARCHAR(512) NOT NULL,
+  word VARCHAR(255) NOT NULL,
   PRIMARY KEY(word)
-)
+);
