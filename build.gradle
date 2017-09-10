@@ -39,7 +39,8 @@ targetCompatibility = 1.8
 
 dependencies {
 
-    compile('org.springframework.boot:spring-boot-starter-web') 
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 
     // '/health' エンドポイントなどを自動で追加するライブラリです。
     // https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-endpoints.html
@@ -58,3 +59,6 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-tomcat')
 
 }
+
+ext['thymeleaf.version'] = '3.0.7.RELEASE'
+ext['thymeleaf-layout-dialect.version'] = '2.2.2'
