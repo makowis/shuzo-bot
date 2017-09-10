@@ -15,6 +15,10 @@ apply plugin: 'idea'
 apply plugin: 'maven'
 apply plugin: 'org.springframework.boot'
 
+springBoot {
+    executable = true
+}
+
 task wrapper(type: Wrapper) {
     gradleVersion = '4.1'
 }
