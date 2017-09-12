@@ -12,7 +12,7 @@ public class V3_1__insert_word_positive_negative implements SpringJdbcMigration 
     @Override
     public void migrate(JdbcTemplate jdbcTemplate) throws Exception {
         try(BufferedReader br = new BufferedReader(
-                new InputStreamReader(ClassLoader.getSystemResourceAsStream("db/migration/seed/pn.csv.m3.120408.trim")));) {
+                new InputStreamReader(getClass().getClassLoader().getResourceAsStream("db/migration/seed/pn.csv.m3.120408.trim")));) {
 
             String str;
             while ((str = br.readLine()) != null) {
