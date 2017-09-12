@@ -1,11 +1,11 @@
-package shuzobot.controller;
+package com.makowis.shuzobot.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import shuzobot.dao.EncouragementWordDao;
-import shuzobot.entity.EncouragementWord;
+import com.makowis.shuzobot.dao.EncouragementWordDao;
+import com.makowis.shuzobot.entity.EncouragementWord;
 
 import java.util.List;
 

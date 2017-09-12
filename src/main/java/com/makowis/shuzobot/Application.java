@@ -1,4 +1,4 @@
-package shuzobot;
+package com.makowis.shuzobot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

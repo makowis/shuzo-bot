@@ -1,5 +1,6 @@
-package shuzobot.slack;
+package com.makowis.shuzobot.slack;
 
+import com.makowis.shuzobot.models.Shuzo;
 import me.ramswaroop.jbot.core.slack.Bot;
 import me.ramswaroop.jbot.core.slack.Controller;
 import me.ramswaroop.jbot.core.slack.EventType;
@@ -11,8 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.WebSocketSession;
-import shuzobot.models.Shuzo;
-import shuzobot.service.WordPositiveNegativeCheckerService;
+import com.makowis.shuzobot.service.WordPositiveNegativeCheckerService;
 
 /**
  * A Slack Bot sample. You can create multiple bots by just

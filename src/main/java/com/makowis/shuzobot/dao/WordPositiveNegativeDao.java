@@ -1,4 +1,4 @@
-package shuzobot.dao;
+package com.makowis.shuzobot.dao;
 
 import org.seasar.doma.Dao;
 import org.seasar.doma.Select;
