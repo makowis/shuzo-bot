@@ -12,8 +12,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.WebSocketSession;
 import shuzobot.models.Shuzo;
-
-import java.util.regex.Matcher;
+import shuzobot.service.WordPositiveNegativeCheckerService;
 
 /**
  * A Slack Bot sample. You can create multiple bots by just
@@ -47,6 +46,9 @@ public class SlackBot extends Bot {
     @Autowired
     Shuzo 修造;
 
+    @Autowired
+    WordPositiveNegativeCheckerService ネガポジ判別機;
+
     /**
      * Invoked when the bot receives a direct mention (@botname: message)
      * or a direct message. NOTE: These two event types are added by jbot
@@ -67,9 +69,11 @@ public class SlackBot extends Bot {
      * @param session
      * @param event
      */
-    @Controller(events = EventType.MESSAGE, pattern = ".*((辛い)|(つらい)|(ツライ)).*")
-    public void onReceiveMessage(WebSocketSession session, Event event, Matcher matcher) {
-        reply(session, event, new Message(修造.励ます()));
+    @Controller(events = EventType.MESSAGE)
+    public void onReceiveMessage(WebSocketSession session, Event event) {
+        if (ネガポジ判別機.isNegative(event.getText())){
+            reply(session, event, new Message(修造.励ます()));
+        }
     }
 
     /**
