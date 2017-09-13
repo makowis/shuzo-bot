@@ -46,6 +46,10 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-web')
     compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 
+    // spring security
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.springframework.boot:spring-boot-starter-security')
+
     // '/health' エンドポイントなどを自動で追加するライブラリです。
     // https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-endpoints.html
     compile('org.springframework.boot:spring-boot-starter-actuator')
