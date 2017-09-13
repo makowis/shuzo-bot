@@ -1,12 +1,9 @@
-package shuzobot.models;
+package com.makowis.shuzobot.models;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import shuzobot.dao.EncouragementWordDao;
-import shuzobot.entity.EncouragementWord;
-
-import java.util.List;
-import java.util.Random;
+import com.makowis.shuzobot.dao.EncouragementWordDao;
+import com.makowis.shuzobot.entity.EncouragementWord;
 
 /**
  * Created by makoto on 2017/09/08.

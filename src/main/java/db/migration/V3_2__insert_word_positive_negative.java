@@ -5,14 +5,15 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 
-public class V3_1__insert_word_positive_negative implements SpringJdbcMigration {
+public class V3_2__insert_word_positive_negative implements SpringJdbcMigration {
 
 
     @Override
     public void migrate(JdbcTemplate jdbcTemplate) throws Exception {
         try(BufferedReader br = new BufferedReader(
-                new InputStreamReader(getClass().getClassLoader().getResourceAsStream("db/migration/seed/pn.csv.m3.120408.trim")))) {
+                new InputStreamReader(getClass().getClassLoader().getResourceAsStream("db/migration/seed/wago.121808.pn")))) {
 
             String str;
             while ((str = br.readLine()) != null) {
@@ -20,11 +21,12 @@ public class V3_1__insert_word_positive_negative implements SpringJdbcMigration 
                 if (split.length > 1) {
                     String sql = "REPLACE INTO WordPositiveNegative(word, score) VALUES (?,?)";
 
-                    String emotion = split[1].trim(); // p or e or n
-                    if (emotion.equals("p")) {
-                        jdbcTemplate.update(sql,split[0].trim(),1);
-                    } else if (emotion.equals("n")) {
-                        jdbcTemplate.update(sql,split[0].trim(),-1);
+                    String emotion = split[0].trim(); // p or e or n
+                    String word = split[1].replace(" ","");
+                    if (emotion.contains("ポジ")) {
+                        jdbcTemplate.update(sql,word,1);
+                    } else if (emotion.contains("ネガ")) {
+                        jdbcTemplate.update(sql,word,-1);
                     }
                 }
             }

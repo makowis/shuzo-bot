@@ -1,11 +1,11 @@
-package shuzobot.service;
+package com.makowis.shuzobot.service;
 
 import com.atilika.kuromoji.TokenBase;
 import com.atilika.kuromoji.ipadic.Token;
 import com.atilika.kuromoji.ipadic.Tokenizer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import shuzobot.dao.WordPositiveNegativeDao;
+import com.makowis.shuzobot.dao.WordPositiveNegativeDao;
 
 import java.util.List;
 import java.util.stream.Collectors;

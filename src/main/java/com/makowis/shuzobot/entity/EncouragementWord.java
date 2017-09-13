@@ -1,4 +1,4 @@
-package shuzobot.entity;
+package com.makowis.shuzobot.entity;
 
 import org.seasar.doma.Entity;
 import org.seasar.doma.GeneratedValue;
