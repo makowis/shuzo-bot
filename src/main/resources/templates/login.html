@@ -1,17 +1,30 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Login page</title>
-</head>
-<body>
-<h1>Login page</h1>
-<p th:if="${loginError}" class="error">ユーザー名かパスワードが間違っています</p>
-<form th:action="@{/login.html}" method="post">
-    <label for="username">Username</label>:
-    <input type="text" id="username" name="username" autofocus="autofocus" /> <br />
-    <label for="password">Password</label>:
-    <input type="password" id="password" name="password" /> <br />
-    <input type="submit" value="Log in" />
-</form>
-</body>
+<html
+    xmlns         = "http://www.w3.org/1999/xhtml"
+    xmlns:th      = "http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout.html}"
+>
+  <head>
+    <title>ログイン</title>
+  </head>
+  <body>
+    <header>
+      <div layout:fragment="custom-menu"></div>
+    </header>
+    <section layout:fragment="layout-content">
+      <h1>ログイン</h1>
+      <p th:if="${loginError}" class="error">ユーザー名かパスワードが間違っています</p>
+      <form th:action="@{/login.html}" method="post">
+        <div class="form-group">
+          <label for="username">ユーザID</label>:
+          <input type="text" id="username" name="username" class="form-control" autofocus="autofocus" />
+        </div>
+        <div class="form-group">
+          <label for="password">パスワード</label>:
+          <input type="password" id="password" name="password" class="form-control" />
+        </div>
+        <input type="submit" class="btn btn-primary" value="ログイン" />
+      </form>
+    </section>
+  </body>
 </html>
