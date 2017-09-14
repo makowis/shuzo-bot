@@ -1,0 +1,18 @@
+<html
+    xmlns         = "http://www.w3.org/1999/xhtml"
+    xmlns:th      = "http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout.html}"
+>
+  <head>
+    <title>励ましの言葉たち</title>
+  </head>
+  <body>
+    <section layout:fragment="layout-content">
+      <h1>励ましの言葉たち</h1>
+      <ul class="list-group">
+        <li class="list-group-item" th:each="element : ${encouragementWords}">[[${element.word}]]</li>
+      </ul>
+    </section>
+  </body>
+</html>
