@@ -12,7 +12,7 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .mvcMatchers("/login","/login-error").permitAll()
+                .mvcMatchers("/login","/login-error","/layout").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()

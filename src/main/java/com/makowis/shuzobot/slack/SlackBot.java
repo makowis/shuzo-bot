@@ -77,6 +77,32 @@ public class SlackBot extends Bot {
     }
 
     /**
+     *
+     *
+     * @param session
+     * @param event
+     */
+    @Controller(events = EventType.MESSAGE, pattern = "^(([Hh]i|[Ss]ay|[Hh]ey)[ 　]*修造)$", next = "confirmCallShuzo")
+    public void onCallShuzo(WebSocketSession session, Event event) {
+        startConversation(event, "confirmCallShuzo");   // start conversation
+        reply(session, event, new Message("呼んでくれてありがとう！"));
+    }
+
+    @Controller
+    public void confirmCallShuzo(WebSocketSession session, Event event) {
+        if (event.getText().contains("はい")
+                || event.getText().contains("呼んだ")) {
+            reply(session, event, new Message("もっと熱くなれよ！！！！"));
+        } else if(event.getText().contains("いいえ")
+                || event.getText().contains("呼んでない")) {
+            reply(session, event, new Message("崖っぷちありがとう！！最高だ！！"));
+        } else {
+            onReceiveMessage(session,event);
+        }
+        stopConversation(event);    // stop conversation
+    }
+
+    /**
      * Invoked when an item is pinned in the channel.
      *
      * @param session
