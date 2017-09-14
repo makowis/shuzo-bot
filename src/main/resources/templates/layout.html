@@ -16,7 +16,7 @@
   <body>
     <header class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
-        <a class="navbar-brand" href="#">修造bot</a>
+        <a class="navbar-brand" href="" th:href="@{/}">修造bot</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -24,7 +24,10 @@
         <div layout:fragment="custom-menu" class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="" th:href="@{/}">ホーム <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="" th:href="@{/encouragementWords}">言葉リスト</span></a>
             </li>
           </ul>
         </div>
