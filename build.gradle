@@ -10,6 +10,12 @@ buildscript {
     }
 }
 
+allprojects {
+    repositories {
+        maven { url 'https://jitpack.io' }
+    }
+}
+
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'maven'
@@ -70,6 +76,10 @@ dependencies {
 
     compile('org.springframework.boot:spring-boot-starter-tomcat')
 
+    // UnitTest
+    testCompile('org.springframework.boot:spring-boot-test')
+    testCompile('com.github.sbrannen:spring-test-junit5:1.0.0')
+    testCompile('org.mockito:mockito-core:2.+')
 }
 
 ext['thymeleaf.version'] = '3.0.7.RELEASE'
