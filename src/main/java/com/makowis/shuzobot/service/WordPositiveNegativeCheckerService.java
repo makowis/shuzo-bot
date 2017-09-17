@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.makowis.shuzobot.dao.WordPositiveNegativeDao;
 
 import java.util.List;
-import java.util.stream.Collectors;
+import io.vavr.collection.Stream;
 
 @Service
 public class WordPositiveNegativeCheckerService {
@@ -21,7 +21,7 @@ public class WordPositiveNegativeCheckerService {
         Tokenizer tokenizer = new Tokenizer() ;
         List<Token> tokens = tokenizer.tokenize(word);
 
-        List<String> splitWords = tokens.stream().map(TokenBase::getSurface).collect(Collectors.toList());
+        List<String> splitWords = Stream.ofAll(tokens).map(TokenBase::getSurface).asJava();
 
         int score = wordPositiveNegativeDao.GetWordsScore(splitWords);
 
