@@ -5,25 +5,28 @@ buildscript {
     }
     repositories {
         mavenCentral()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "gradle.plugin.com.github.maiflai:gradle-scalatest:0.16"
     }
 }
 
-allprojects {
-    repositories {
-        maven { url 'https://jitpack.io' }
-    }
-}
+ext.junitPlatformVersion = '1.0.0'
+ext.junitJupiterVersion  = '5.0.0'
 
 apply plugin: 'java'
 apply plugin: 'idea'
+apply plugin: 'eclipse'
 apply plugin: 'maven'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'kotlin'
 apply plugin: 'scala'
+apply plugin: "com.github.maiflai.scalatest"
 
 springBoot {
     executable = true
@@ -46,6 +49,7 @@ jar {
 
 repositories {
     mavenCentral()
+    maven { url 'https://jitpack.io' }
 }
 
 sourceCompatibility = 1.8
@@ -78,6 +82,8 @@ dependencies {
     // 形態素解析
     compile('com.atilika.kuromoji:kuromoji-ipadic:0.9.0')
 
+    // Vavr
+    compile('io.vavr:vavr:0.9.0')
 
     compile('org.springframework.boot:spring-boot-starter-tomcat')
 
@@ -87,7 +93,10 @@ dependencies {
     testCompile('org.mockito:mockito-core:2.+')
     testCompile('org.scala-lang:scala-library:2.12.3')
     testCompile('org.scalatest:scalatest_2.12:3.0.1')
+    testRuntime 'org.pegdown:pegdown:1.4.2'
+    testCompile("org.junit.platform:junit-platform-runner:${junitPlatformVersion}")
 
+    // kotlin
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
 }
 

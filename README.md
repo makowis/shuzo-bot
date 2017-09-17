@@ -1,4 +1,7 @@
 # shuzoBot
+
+[![Build Status](https://travis-ci.org/makowis/shuzo-bot.svg?branch=master)](https://travis-ci.org/makowis/shuzo-bot)
+
 slack用のbotの勉強兼Spring Bootの勉強用。
 ネガティブな単語に反応して、何か喋ります。
 
