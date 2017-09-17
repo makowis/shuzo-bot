@@ -17,14 +17,14 @@ public class UserPasswordChangeService {
     @Autowired
     PasswordEncoder passwordEncoder;
 
-    public Optional<String> change(String userId, String oldPassword, String newPassword) {
+    public boolean isValidPassword(String userId, String oldPassword) {
         String password = usersDao.selectPassword(userId);
-        if (!passwordEncoder.matches(oldPassword,password)) {
-            return Optional.of("パスワードが違います。");
-        }
+        return passwordEncoder.matches(oldPassword,password);
+    }
+
+    public void change(String userId, String newPassword) {
 
         usersDao.updatePassword(userId, passwordEncoder.encode(newPassword));
-        return Optional.empty();
     }
 
 }

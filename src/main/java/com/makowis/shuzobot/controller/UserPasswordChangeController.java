@@ -6,7 +6,6 @@ import com.makowis.shuzobot.validation.PasswordEqualsValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.User;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,11 +15,6 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.context.WebApplicationContext;
-import org.springframework.web.context.support.WebApplicationContextUtils;
-
-import javax.servlet.http.HttpServletRequest;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/user")
@@ -48,14 +42,20 @@ public class UserPasswordChangeController {
                                    Model model,
                                    @AuthenticationPrincipal User user){
 
+        String page = "/user/passwordChange";
+
         if (result.hasErrors()) {
             model.addAttribute("validationError", "不正な値が入力されました。");
-            return "/user/passwordChange";
+            return page;
         }
 
-        Optional<String> errorMsg = userPasswordChangeService.change(user.getUsername(), userPasswordChangeForm.getOldPassword(), userPasswordChangeForm.getNewPassword());
-        errorMsg.ifPresent(s -> model.addAttribute("validationError", s));
+        if (!userPasswordChangeService.isValidPassword(user.getUsername(), userPasswordChangeForm.getOldPassword())) {
+            model.addAttribute("validationError", "旧・パスワードが違います");
+            return page;
+        }
 
-        return "/user/passwordChange";
+        userPasswordChangeService.change(user.getUsername(), userPasswordChangeForm.getNewPassword());
+        model.addAttribute("successMessage", "パスワード更新成功しました。");
+        return page;
     }
 }
