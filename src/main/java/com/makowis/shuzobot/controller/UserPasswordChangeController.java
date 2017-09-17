@@ -39,9 +39,7 @@ public class UserPasswordChangeController {
         }
 
         Optional<String> errorMsg = userPasswordChangeService.change(user.getUsername(), form.getOldPassword(), form.getNewPassword());
-        if (errorMsg.isPresent()) {
-            model.addAttribute("validationError", errorMsg.get());
-        }
+        errorMsg.ifPresent(s -> model.addAttribute("validationError", s));
 
         return "/user/passwordChange";
     }

@@ -23,6 +23,7 @@ public class UserPasswordChangeService {
             return Optional.of("パスワードが違います。");
         }
 
+        usersDao.updatePassword(userId, passwordEncoder.encode(newPassword));
         return Optional.empty();
     }
 
