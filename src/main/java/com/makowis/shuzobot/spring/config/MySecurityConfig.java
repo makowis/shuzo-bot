@@ -39,11 +39,11 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Autowired
-    protected void configure(AuthenticationManagerBuilder auth, PasswordEncoder passwordEncoder) throws Exception {
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication()
                 .dataSource(dataSource)
                 .usersByUsernameQuery("SELECT user_id, password, enabled FROM Users WHERE user_id=?")
                 .authoritiesByUsernameQuery("SELECT user_id, role FROM Authorities WHERE user_id=?")
-                .passwordEncoder(passwordEncoder);
+                .passwordEncoder(passwordEncoder());
     }
 }

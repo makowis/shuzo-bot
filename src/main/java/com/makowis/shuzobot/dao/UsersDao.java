@@ -8,5 +8,5 @@ import org.seasar.doma.boot.ConfigAutowireable;
 @ConfigAutowireable
 public interface UsersDao {
     @Select
-    int checkPassword(String userId, String password);
+    String selectPassword(String userId);
 }

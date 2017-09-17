@@ -3,6 +3,8 @@ package com.makowis.shuzobot.controller;
 import com.makowis.shuzobot.form.UserPasswordChangeForm;
 import com.makowis.shuzobot.service.UserPasswordChangeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,16 +32,15 @@ public class UserPasswordChangeController {
     }
 
     @RequestMapping(value = "/passwordChange",method = RequestMethod.POST)
-    public String doPasswordChange(@Validated @ModelAttribute UserPasswordChangeForm form, BindingResult result, Model model){
+    public String doPasswordChange(@Validated @ModelAttribute UserPasswordChangeForm form, BindingResult result, Model model, @AuthenticationPrincipal User user){
 
         if (result.hasErrors()) {
             model.addAttribute("validationError", "不正な値が入力されました。");
         }
 
-
-        Optional<String> aaa = userPasswordChangeService.change("admin", form.getOldPassword(), form.getNewPassword());
-        if (aaa.isPresent()) {
-            model.addAttribute("validationError", aaa.get());
+        Optional<String> errorMsg = userPasswordChangeService.change(user.getUsername(), form.getOldPassword(), form.getNewPassword());
+        if (errorMsg.isPresent()) {
+            model.addAttribute("validationError", errorMsg.get());
         }
 
         return "/user/passwordChange";
