@@ -19,7 +19,7 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
     private DataSource dataSource;
 
     @Bean
-     PasswordEncoder passwordEncoder() {
+    PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
@@ -40,11 +40,10 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     protected void configure(AuthenticationManagerBuilder auth, PasswordEncoder passwordEncoder) throws Exception {
-        String hoge = passwordEncoder.encode("password");
         auth.jdbcAuthentication()
                 .dataSource(dataSource)
-                .usersByUsernameQuery("SELECT LOGIN_ID, PASSWORD, ENABLED FROM USERS WHERE LOGIN_ID=?")
-                .authoritiesByUsernameQuery("SELECT LOGIN_ID, ROLE FROM AUTHORITIES WHERE LOGIN_ID=?")
+                .usersByUsernameQuery("SELECT user_id, password, enabled FROM Users WHERE user_id=?")
+                .authoritiesByUsernameQuery("SELECT user_id, role FROM Authorities WHERE user_id=?")
                 .passwordEncoder(passwordEncoder);
     }
 }
