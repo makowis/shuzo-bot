@@ -1,8 +1,5 @@
 package com.makowis.shuzobot.controller;
 
-import com.makowis.shuzobot.form.UserPasswordChangeForm;
-import com.makowis.shuzobot.service.UserPasswordChangeService;
-import com.makowis.shuzobot.validation.PasswordEqualsValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.User;
@@ -15,6 +12,10 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.makowis.shuzobot.form.UserPasswordChangeForm;
+import com.makowis.shuzobot.service.UserPasswordChangeService;
+import com.makowis.shuzobot.validation.PasswordEqualsValidator;
 
 @Controller
 @RequestMapping("/user")
@@ -32,15 +33,13 @@ public class UserPasswordChangeController {
     }
 
     @RequestMapping(value = "/passwordChange", method = RequestMethod.GET)
-    public String passwordChange(){
+    public String passwordChange() {
         return "/user/passwordChange";
     }
 
-    @RequestMapping(value = "/passwordChange",method = RequestMethod.POST)
+    @RequestMapping(value = "/passwordChange", method = RequestMethod.POST)
     public String doPasswordChange(@Validated @ModelAttribute UserPasswordChangeForm userPasswordChangeForm,
-                                   BindingResult result,
-                                   Model model,
-                                   @AuthenticationPrincipal User user){
+            BindingResult result, Model model, @AuthenticationPrincipal User user) {
 
         String page = "/user/passwordChange";
 

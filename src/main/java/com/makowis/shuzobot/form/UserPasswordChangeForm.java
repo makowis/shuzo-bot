@@ -12,7 +12,6 @@ public class UserPasswordChangeForm {
     @NotNull
     private String newPasswordConfirm;
 
-
     public String getOldPassword() {
         return oldPassword;
     }

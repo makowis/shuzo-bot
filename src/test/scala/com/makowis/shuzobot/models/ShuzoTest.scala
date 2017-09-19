@@ -5,7 +5,10 @@ import com.makowis.shuzobot.entity.EncouragementWord
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.mock.mockito.MockBean
-import org.springframework.test.context.{ContextConfiguration, TestContextManager}
+import org.springframework.test.context.{
+  ContextConfiguration,
+  TestContextManager
+}
 import org.springframework.test.context.junit.jupiter.SpringExtension
 import org.mockito.Mockito.when
 import org.scalatest.{DiagrammedAssertions, FlatSpec}
@@ -16,9 +19,7 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader
   classes = Array(classOf[Shuzo]),
   loader = classOf[AnnotationConfigContextLoader]
 )
-class ShuzoTest
-  extends FlatSpec
-  with DiagrammedAssertions {
+class ShuzoTest extends FlatSpec with DiagrammedAssertions {
 
   @MockBean
   val encouragementWordDao: EncouragementWordDao = null

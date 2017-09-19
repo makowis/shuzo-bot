@@ -1,10 +1,10 @@
 package com.makowis.shuzobot.validation;
 
-
-import com.makowis.shuzobot.form.UserPasswordChangeForm;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
+
+import com.makowis.shuzobot.form.UserPasswordChangeForm;
 
 @Component
 public class PasswordEqualsValidator implements Validator {
@@ -25,9 +25,8 @@ public class PasswordEqualsValidator implements Validator {
             return;
         }
         if (!password.equals(confirmPassword)) {
-            errors.rejectValue("newPassword",
-            "PasswordEqualsValidator.userPasswordChangeForm.password",
-            "新・パスワードが一致しません。");
+            errors.rejectValue("newPassword", "PasswordEqualsValidator.userPasswordChangeForm.password",
+                    "新・パスワードが一致しません。");
         }
     }
 }
