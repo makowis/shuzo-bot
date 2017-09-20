@@ -1,0 +1,28 @@
+<html
+    xmlns         = "http://www.w3.org/1999/xhtml"
+    xmlns:th      = "http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout.html}"
+>
+<head>
+  <title>励ましの言葉追加</title>
+</head>
+<body>
+<section layout:fragment="layout-content">
+  <h1>励ましの言葉追加</h1>
+
+  <!--/*@thymesVar id="userPasswordChange" type="com.makowis.shuzobot.form.EncouragementWordAddForm"*/-->
+  <form th:action="@{/encouragementWords/add}" th:object="${encouragementWordAddForm}" method="post">
+    <ul class="list-unstyled p-3 mb-2 bg-danger text-white" th:if="${#fields.hasErrors()}">
+      <li th:each="error : ${#fields.errors()}" th:text="${error}"></li>
+    </ul>
+    <p class="p-3 mb-2 bg-info text-white" th:if="${successMessage}" th:text="${successMessage}">success messager</p>
+    <div class="form-group">
+      <label for="word">励ましの言葉</label>
+      <textarea name="word" id="word" cols="30" rows="4" maxlength="255" class="form-control" ></textarea>
+    </div>
+    <input type="submit" class="btn btn-primary" value="追加" />
+  </form>
+</section>
+</body>
+</html>

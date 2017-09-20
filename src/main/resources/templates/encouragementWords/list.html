@@ -10,6 +10,7 @@
   <body>
     <section layout:fragment="layout-content">
       <h1>言葉リスト</h1>
+      <a href="" th:href="@{/encouragementWords/add}" class="btn btn-outline-primary"></a>
       <ul class="list-group">
         <li class="list-group-item" th:each="element : ${encouragementWords}">[[${element.word}]]</li>
       </ul>
