@@ -32,8 +32,7 @@ class ShuzoTest extends FlatSpec with DiagrammedAssertions {
   it must "励ます" in {
     val expected = "元気出せよ"
 
-    val word = new EncouragementWord
-    word.word = expected
+    val word = new EncouragementWord(expected)
 
     when(encouragementWordDao.selectRandom).thenReturn(word)
     assert(expected == shuzo.励ます)

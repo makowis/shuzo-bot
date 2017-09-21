@@ -17,6 +17,7 @@
       <li th:each="error : ${#fields.errors()}" th:text="${error}"></li>
     </ul>
     <p class="p-3 mb-2 bg-info text-white" th:if="${successMessage}" th:text="${successMessage}">success messager</p>
+    <p class="p-3 mb-2 bg-danger text-white" th:if="${errorMessage}" th:text="${errorMessage}">error message</p>
     <div class="form-group">
       <label for="word">励ましの言葉</label>
       <textarea name="word" id="word" cols="30" rows="4" maxlength="255" class="form-control" ></textarea>

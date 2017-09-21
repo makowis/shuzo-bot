@@ -3,8 +3,13 @@ package com.makowis.shuzobot.entity;
 import org.seasar.doma.Entity;
 import org.seasar.doma.Id;
 
-@Entity
+@Entity(immutable = true)
 public class EncouragementWord {
+
     @Id
-    public String word;
+    final public String word;
+
+    public EncouragementWord(String word) {
+        this.word = word;
+    }
 }
