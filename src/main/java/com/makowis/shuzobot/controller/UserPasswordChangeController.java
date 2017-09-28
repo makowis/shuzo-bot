@@ -34,14 +34,14 @@ public class UserPasswordChangeController {
 
     @RequestMapping(value = "/passwordChange", method = RequestMethod.GET)
     public String passwordChange() {
-        return "/user/passwordChange";
+        return "user/passwordChange";
     }
 
     @RequestMapping(value = "/passwordChange", method = RequestMethod.POST)
     public String doPasswordChange(@Validated @ModelAttribute UserPasswordChangeForm userPasswordChangeForm,
             BindingResult result, Model model, @AuthenticationPrincipal User user) {
 
-        String page = "/user/passwordChange";
+        String page = "user/passwordChange";
 
         if (result.hasErrors()) {
             model.addAttribute("validationError", "不正な値が入力されました。");
