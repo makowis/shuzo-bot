@@ -14,7 +14,7 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "gradle.plugin.com.github.maiflai:gradle-scalatest:0.16"
         classpath "gradle.plugin.com.github.youribonnaffe.gradle.format:gradle-format-plugin:1.5"
-        classpath "com.diffplug.spotless:spotless-plugin-gradle:3.5.2"
+        classpath "com.diffplug.spotless:spotless-plugin-gradle:3.6.0"
     }
 }
 
@@ -37,7 +37,7 @@ springBoot {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '4.1'
+    gradleVersion = '4.3'
 }
 
 idea.module.outputDir = compileJava.destinationDir
@@ -48,11 +48,12 @@ afterEvaluate {
     tasks.getByName('spotlessCheck').dependsOn(tasks.getByName('spotlessApply'))
 }
 spotless {
-    java {
-        importOrder 'java', 'javax', 'org', 'com', 'com.diffplug', "org.flywaydb", 'org.springframework', 'io.vavr', 'com.atilika.kuromoji', 'me.ramswaroop', 'com.makowis' // A sequence of package names
-        removeUnusedImports()
-        eclipse().configFile 'spotless.eclipseformat.xml'   // XML file dumped out by the Eclipse formatter
-    }
+//    TODO spotlessがJava9対応したらコメントアウト
+//    java {
+//        importOrder 'java', 'javax', 'org', 'com', 'com.diffplug', "org.flywaydb", 'org.springframework', 'io.vavr', 'com.atilika.kuromoji', 'me.ramswaroop', 'com.makowis' // A sequence of package names
+//        removeUnusedImports()
+//        eclipse().configFile 'spotless.eclipseformat.xml'   // XML file dumped out by the Eclipse formatter
+//    }
     kotlin {
         ktlint()
     }
@@ -71,8 +72,8 @@ repositories {
     maven { url 'https://jitpack.io' }
 }
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+sourceCompatibility = 9
+targetCompatibility = 9
 
 dependencies {
 
@@ -123,11 +124,11 @@ ext['thymeleaf.version'] = '3.0.7.RELEASE'
 ext['thymeleaf-layout-dialect.version'] = '2.2.2'
 compileKotlin {
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "9"
     }
 }
 compileTestKotlin {
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "9"
     }
 }
